@@ -14,7 +14,7 @@ body{
   margin-bottom: 160px;
 }
 .banner img{
-  width: 100%;
+  width:  0 auto;
   margin: 0 auto;
 }
 
