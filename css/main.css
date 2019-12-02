@@ -360,4 +360,60 @@ header .header-container .nav-box .nav-mobile-menu span{
   .feature-text{
     width: 100% !important;
   }
-}  
+}
+
+.my-work {
+    width: 1090px;
+    margin: 0 auto;
+}
+#brand .bd-box {
+    overflow: hidden;
+}
+.bd-box {
+    text-align: left;
+}
+#brand .bd-box li {
+    float: left;
+    width: 355px;
+    height: 211px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #F3F3F3;
+}
+#brand .bd-box li>a {
+    width: 355px;
+    height: 705px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 9999;
+    display: block;
+    float: left;
+    background: url(../img/png.png) no-repeat;
+}
+#brand .bd-box li div.just img {
+    width: 355px;
+    height: 211px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+    overflow: hidden;
+}
+#brand .bd-box li div.against img {
+    width: 0px;
+    height: 211px;
+    position: absolute;
+    left: 177.5px;
+    top: 0px;
+    z-index: 1;
+    text-align: center;
+    line-height: 211px;
+    font-size: 14px;
+    color: #FFF;
+    background: #ffa340;
+    font-weight: bold;
+    overflow: hidden;
+    display: none;
+    cursor: pointer;
+}
