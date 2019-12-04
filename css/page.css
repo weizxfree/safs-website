@@ -163,6 +163,7 @@ section{
     width: 30%;
 }
 
+
 /*右侧文本段落样式*/
 .box-right .box-right-mid h4{
 	color: #ff9900;
@@ -172,6 +173,7 @@ section{
     margin: 0px 10px;
     padding: 0px 10px;
 }
+
 
 /*微信二维码*/
 .box-right .box-weixin p{
@@ -255,7 +257,7 @@ section{
 	display: block;
 	width: 160px;
 	height: 160px;
-	background-image: url("../img/weixin-safs.png");
+	background-image: url("../img/gongzhonghao.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin: 0 auto;

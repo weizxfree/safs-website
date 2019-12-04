@@ -113,10 +113,11 @@ header .header-container .nav-box .nav-mid .navbar-nav li.line-item {
 
 /*footer样式*/
 footer{
-    width: 100%;
-    background-color: #fff; 
-    padding-top: 40px;
-    -webkit-box-shadow:0 0 10px rgba(204,204,204, .5); /*透明度绿色高亮*/ 
+    width: 100%
+    position:fixed
+    bottom:0px
+    background-color: #fff;
+    -webkit-box-shadow:0 0 10px rgba(204,204,204, .5); /*透明度绿色高亮*/
     -moz-box-shadow:0 0 10px rgba(204, 204, 204, .5);  
     box-shadow:0 0 10px rgba(204, 204, 204, .5);
 }
@@ -399,8 +400,10 @@ header .header-container .nav-box .nav-mobile-menu span{
     top: 0px;
     z-index: 2;
     overflow: hidden;
+    object-fit: contain;
 }
 #brand .bd-box li div.against img {
+    object-fit: cover;
     width: 0px;
     height: 360px;
     position: absolute;
@@ -411,7 +414,6 @@ header .header-container .nav-box .nav-mobile-menu span{
     line-height: 211px;
     font-size: 14px;
     color: #FFF;
-    background: #ffa340;
     font-weight: bold;
     overflow: hidden;
     display: none;
