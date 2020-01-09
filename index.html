@@ -1,162 +1,287 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!--
+  ~ Created by zhangwei on 2019/05/16.
+  ~ Copyright 2015－2019 Sensors Data Inc.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="石头网络，做一家小而美的互联网技术服务公司"/>
-    <meta name="keywords" content="石头网络,互联网,软件开发,技术咨询,小程序"/>
-    <meta name="author" content="shitou">
-    <title>石头网络-首页</title>
-    <!-- 框架 -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- 样式清理 -->
-    <link href="css/normalize.css" rel="stylesheet">
-    <!-- 通用页面样式 -->
-    <link href="css/main.css" rel="stylesheet">
-    <!-- 首页样式 -->
-    <link href="css/index.css" rel="stylesheet">
-    <!-- HTML5兼容性处理 -->
-    <!-- Respond.js响应式设计>
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Favicons网站图标 -->
-    <link rel="shortcut icon" href="img/favicon.ico"/>
-    <link rel="bookmark" href="img/favicon.ico" type="image/x-icon"/>
+    <meta content="charset=UTF-8" http-equiv="Content-Type">
+
+    <title>H5打通</title>
+    <script>
+  var abc="文字文字——测试2";
+(function(para) {
+  var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+  if(typeof(w['sensorsDataAnalytic201505']) !== 'undefined') {
+      return false;
+  }
+  w['sensorsDataAnalytic201505'] = n;
+  sa = function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+  var ifs = ['track','quick','register','registerPage','registerOnce','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister','getAppStatus'];
+  for (var i = 0; i < ifs.length; i++) {
+    sa[ifs[i]] = sa.call(null, ifs[i]);
+  }
+  if (!w[n]._t) {
+    x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+    x.async = 1;
+    x.src = p;
+    x.setAttribute('charset','UTF-8');
+    y.parentNode.insertBefore(x, y);
+    w[n].para = para;
+  }
+})({
+  sdk_url: 'https://static.sensorsdata.cn/sdk/1.12.2/sensorsdata.min.js',
+  //sdk_url: 'https://static.sensorsdata.cn/sdk/1.9.8/sensorsdata.min.js',
+
+  heatmap_url: 'https://static.sensorsdata.cn/sdk/1.12.5/heatmap.min.js',
+  name: 'sa',
+  show_log:true,
+  server_url: 'https://sdkdebugtest.datasink.sensorsdata.cn/sa?project=default&token=cfb8b60e42e0ae9b',
+  //send_type:"ajax",
+  use_client_time: true,
+  use_app_track: true,
+  heatmap:{
+    /*collect_url: function(){
+
+        //如果只采集首页
+       if(location.href === 'http://www.jww.com:8080/index.html?&lixiang=hahaha' || location.href === 'http://www.jww.com/'){
+        console.log(123);
+           return false;
+       }
+    },*/
+    
+    // collect_element:function( element_target ){
+    //        //data=test 不采集
+    //        if(element_target.getAttribute('data') === 'test'){
+    //            return false;
+    //        }else{
+    //            return true;
+    //        }
+    //    },
+    custom_property:function( element_target ){
+           // 比如您需要给有 data2=test2 属性的标签的点击事件增加属性 $element_content:'大家好' ，则代码如下
+           if(element_target.getAttribute('data2') === 'test2'){
+            console.log(123);
+               return {
+                   $element_content:'大家好'
+               }
+           }
+       },
+    //  clickmap:'not_collect',
+    collect_input:function(element_target){
+        //例如如果元素的id是a，就采集这个元素里的内容
+        if(element_target.id === 'tianxie'){
+            return true;
+        }
+    },
+    scroll_delay_time: 4000
+  } ,
+/*  scrollmap: {
+    //返回真会采集当前页面的数据，返回假表示不采集当前页面,设置这个函数后，内容为空的话，是返回假的。不设置函数默认是采集所有页面
+    collect_url: function(){
+        //如果只采集首页
+        if(location.href === 'xhttp://www.jww.com:8080/index.html?&lixiang=hahaha' || location.href === 'http://www.jww.com/'){
+            return false;
+        }
+    },
+    },*/
+  //source_channel:['cmpid'],
+  source_channel:['lixiang','kkkkk','jjjj'],
+  //debug_mode: true,  //false 关闭， true 开启，默认 false 关闭
+  //debug_mode_upload: false, //false 不入库， true 数据入库，默认 false 不入库
+});
+
+//sa.para.openid_url
+//sa.track('clickNav',{$lib_detail:'##clickNavFunc##nav.js##28'});
+
+ sa.registerPage({
+   viewProduct:"ssssDDDD"
+ });
+
+
+
+//sa.login('user20181205');
+
+//sa.quick('autoTrack',{$lib_detail:'##clickNavFunc##nav.js##28'});
+sa.quick('autoTrack',{detail:'123456'});
+// sa.logout();
+//sa.setOnceProfile({email:['jww@qq.com','jww@baidu.com']});
+//sa.appendProfile({email: ['jww@360.com']});  
+
+
+
+
+    </script>
+
+
 </head>
+
 <body>
-<!-- 移动端导航 -->
-<div class="mask"></div>
-<div class="sidebar">
-    <ul>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="aboutus.html">关于我们</a></li>
-        <li><a href="culture.html">公司文化</a></li>
-        <li><a href="contactus.html">联系我们</a></li>
-    </ul>
-</div>
-<!-- header顶部导航 -->
-<header>
-    <div class="header-container">
-        <div class="nav-box">
-            <!-- logo -->
-            <div class="nav-left">
-                <a id="logo_top" href="#"></a>
-            </div>
-            <!-- memu选项 -->
-            <div class="nav-mid">
-                <ul class="navbar-nav">
-                    <li><a class="active" href="index.html">首页</a></li>
-                    <li><a class="" href="product.html">项目介绍</a></li>
-                    <li><a class="" href="contactus.html">联系我们</a></li>
-                </ul>
-            </div>
-            <!-- 响应式菜单 -->
-            <div class="nav-mobile-menu">
-                <span class="sidebar_trigger"></span>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- banner轮播组件 -->
-<div class="banner">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-        <!-- 序号组件 -->
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        </ol>
-        <!-- 图片组件 -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="img/animate.gif" alt="1 slide">
-            </div>
-        </div>
-        <!-- 进退按钮 -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button"
-           data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button"
-           data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-</div>
-<!-- feature内容 -->
-<div class="feature clearfix">
-    <div class="feature-content">
-        <div class="feature-image">
-            <img src="img/project-image.png" alt="已孵化业务">
-        </div>
-        <div class="feature-text">
-            <div class="feature-text-top">
-                <span class="feature-icon-project"></span>
-                <a class="feature-title">工匠精神</a>
-            </div>
-            <p>不断雕琢客户的产品，不断改善自己的服务，享受产品和服务在双手中升华的过程。对细节有很高的要求，追求完美和极致。对精品有着执着的坚持，其利虽微，却忠于内心。</p>
-        </div>
-    </div>
-    <div class="feature-content">
-        <div class="feature-image">
-            <img src="img/team-image.png" alt="我们的团队">
-        </div>
-        <div class="feature-text">
-            <div class="feature-text-top">
-                <span class="feature-icon-team"></span>
-                <a class="feature-title">“议会”制度</a>
-            </div>
-            <p>“议会”制度
-                我们致力于打破「石头网络」的企业边界，让员工、客户、合作伙伴、供应商通过“议会”制度进行提案制定规则，影响「石头网络」的管理和业务，共同创造价值。</p>
-        </div>
-    </div>
-    <div class="feature-content" id="feature-last">
-        <div class="feature-image">
-            <img src="img/dev-image.png" alt="职业发展">
-        </div>
-        <div class="feature-text">
-            <div class="feature-text-top">
-                <span class="feature-icon-dev"></span>
-                <a class="feature-title">极致效率</a>
-            </div>
-            <p>勤奋严谨的思考，严于律己的伙伴，短小精悍的流程，先进的生产力工具：Base、Asana、Xero、Jira、Jenkins、Code Climate、Adobe
-                Assets ... ，抓住每个提升效率的微小机会。</p>
-        </div>
-    </div>
-</div>
-<!-- footer页面底部 -->
-<footer>
-    <div class="footer-box clearfix">
-        <div class="footer-left">
-            <span class="globle"></span>
-        </div>
-        <div class="footer-right">
-            <div class="footer-laber">
-                <ul>
-                    <li class="footer-contact">邮箱:&nbsp 541642069@qq.com</li>
-                    <li class="footer-contact">QQ :&nbsp 541642069</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- 版权信息 -->
-<div class="container copy">
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <!--              <p class="copyright">©2011-2019 AnHui Alliance Financial Services Limited. All rights reserved. 沪ICP备 10202263 号 </p>-->
-        </div>
-    </div>
-</div>
-<!-- 返回顶部按钮 -->
-<button class="back-to-top" style="display: none;"></button>
-<!-- 框架库加载 -->
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!-- 脚本加载 -->
-<script src="js/main.js"></script>
+<input id="keyWord" placeholder="输入搜索关键词" type="text"/>
+<button data="test" id="sosuo" type="button">搜索</button>
+
+<div id="div">我是DIV2</div>
+<script>
+document.getElementById("div").onclick = function(){
+  console.log("t123")
+        sa.track('ViewDIV', {}, function() {console.log("wsxedc")});
+}
+
+
+
+
+
+</script>
+<!--  <script>
+  document.getElementById("div").onclick = function(){
+     sa.quick('trackHeatMap',this); 
+   }
+   
+   document.getElementById("sosuo").onclick = function(){
+     //event.stopPropagation();
+   }
+ </script> -->
+
+<script>
+
+</script>
+
+
+<button id="tijiao">提交</button>
+<!-- <script>
+document.getElementById("tijiao").onclick = function(){
+        sa.track('ViewHello', {
+                name: '123456'
+            });
+}
+
+</script> -->
+<script>
+document.getElementById("tijiao").onclick = function(){
+        sa.track('ViewHello', {
+                name: ['123456','234567']
+            });
+}
+
+
+
+
+
+</script>
+<!-- <script>
+$(function(){
+        sa.track('ViewJww', {
+                name: '123456'
+            });
+})
+
+</script> -->
+
+<input id="tianxie" type="text" value="填写内容"/>填写
+
+<select id="shengfen" name="省份">
+    <option value="0">北京</option>
+    <option value="1">上海</option>
+    <option value="2">合肥</option>
+</select>
+
+<script>
+document.getElementById("shengfen").onchange = function(){
+  console.log("@@@@@@@@@")
+        sa.quick('trackHeatMap',this); 
+}
+
+
+
+
+
+</script>
+<button id="testTime">测试 $Time</button>
+<script>
+document.getElementById("testTime").onclick = function(){
+    sa.track('TestTime', {
+        $time: '123456461',
+        ProductCatalog: "Laptop Computer",
+        ProductName: "MacBook Pro",
+        ProductPrice: 123.45
+    });
+}
+
+
+</script>
+
+<script>
+
+if(typeof window.SensorsData_APP_JS_Bridge === 'object' && window.SensorsData_APP_JS_Bridge.snapAllWebElements){
+
+       var data = [
+        {
+        "hashCode":191411954,
+        "id":-1,
+        "index":0,
+        "sa_id_name": "#sosuo",
+        "top":200, // 左上角距离顶部边框距离 px
+        "left":200, // 左上角距离左侧边框距离 px
+        "width":200, // 元素宽度 px
+        "height":200, // 元素高度 px
+        "scrollX":0, // 当前屏幕 x 方向滚动距离
+        "scrollY":0, // 当前屏幕 Y 方向滚动距离
+        "visibility":0,
+        "translationX":0,
+        "translationY":0,
+        "classes":[],
+        "importantForAccessibility":true,
+        "clickable":true,
+        "subviews":[],
+        "superview":232274249
+       },
+
+        {
+        "hashCode":191411955,
+        "id":-1,
+        "index":1,
+        "sa_id_name": "#sosuo1",
+        "top":100, // 左上角距离顶部边框距离 px
+        "left":100, // 左上角距离左侧边框距离 px
+        "width":50, // 元素宽度 px
+        "height":20, // 元素高度 px
+        "scrollX":0, // 当前屏幕 x 方向滚动距离
+        "scrollY":0, // 当前屏幕 Y 方向滚动距离
+        "visibility":0,
+        "translationX":0,
+        "translationY":0,
+        "classes":[],
+        "importantForAccessibility":true,
+        "clickable":true,
+        "subviews":[],
+        "superview":232274249
+       }
+
+       ];
+
+       SensorsData_APP_JS_Bridge.snapAllWebElements(JSON.stringify(data));
+      }
+
+
+
+</script>
+
+<p style="height:1000px"></p>
 </body>
+
+
 </html>
